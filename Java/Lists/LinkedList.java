@@ -21,24 +21,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package DS_Testing;
-import Trees.*;
+package Lists;
+
 /**
  *
- * @author cory
+ * @author Cory Buck
  */
-public class TreeTesting {
-    public static void main(String[] args){
-        BinaryTree tree = new BinaryTree();
-        tree.insert("one",1);
-        tree.insert("two",2);
-        tree.insert("three",3);
-        tree.insert("four",4);
-        tree.insert("five",5);
-        tree.traversePostOrder();
-        tree.remove("four");
-        
-        System.out.println();
-        
-    }
+public class LinkedList {
+    
 }
