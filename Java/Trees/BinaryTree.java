@@ -15,7 +15,7 @@ package Trees;
  * 
  * 
  */
-public class BinaryTree<T1 extends Comparable<T1>,T2>{
+public class BinaryTree<T1 extends Comparable<T1>,T2> implements TreeInterface<T1,T2>{
     private Node root;
     private int size;
 
@@ -26,6 +26,7 @@ public class BinaryTree<T1 extends Comparable<T1>,T2>{
     }
 
     //insertion algorithms
+    @Override
     public void insert(T1 key, T2 val){
         if(isEmpty()){
             root = new Node(key, val);
@@ -54,6 +55,7 @@ public class BinaryTree<T1 extends Comparable<T1>,T2>{
     }
 
     //removal algorithms
+    @Override
     public void remove(T1 key){
         if(!isEmpty()){
             if(key.compareTo(root.getKey()) == 0){
@@ -128,23 +130,25 @@ public class BinaryTree<T1 extends Comparable<T1>,T2>{
         }
     }
     
-    public Object search(T1 key){
+    @Override
+    public T2 get(T1 key){
         if(!isEmpty()){
-            return searchHelper(key, root);
+            return getHelper(key, root);
         }else return null;
     }
     
-    public Object searchHelper(T1 key, Node temp){
+    public T2 getHelper(T1 key, Node temp){
         if(key.compareTo(temp.getKey()) < 0){ 
-            if(temp.getLeftChild() != null) return searchHelper(key, temp.getLeftChild());
+            if(temp.getLeftChild() != null) return getHelper(key, temp.getLeftChild());
             else return null;
         }else if(key.compareTo(temp.getKey()) > 0){
-            if(temp.getRightChild() != null) return searchHelper(key, temp.getRightChild());
+            if(temp.getRightChild() != null) return getHelper(key, temp.getRightChild());
             else return null;
         }else return temp.getValue();
     }
 
     //traversal algorithms
+    @Override
     public void traversePreOrder(){
         System.out.println("\t-----------------Pre Order Traversal----------------------");
         if(root != null){
@@ -159,6 +163,7 @@ public class BinaryTree<T1 extends Comparable<T1>,T2>{
         if(temp.getRightChild() != null)traversePreOrderHelper(temp.getRightChild());
     }
     
+    @Override
     public void traverseInOrder(){
         System.out.println("---------------In Order Traversal of " + getSize() + " items------------------------");
         if(root != null){
@@ -173,6 +178,7 @@ public class BinaryTree<T1 extends Comparable<T1>,T2>{
         if(temp.getRightChild() != null) traverseInOrderHelper(temp.getRightChild());
     }
     
+    @Override
     public void traversePostOrder(){
         System.out.println("---------------Post Order Traversal of " + getSize() + " items---------");
         if(!isEmpty()){
@@ -188,13 +194,13 @@ public class BinaryTree<T1 extends Comparable<T1>,T2>{
     }
 
     //returns size
-    
+    @Override
     public int getSize(){
         return size;
     }
 
     //checks if tree is empty
-    
+    @Override
     public boolean isEmpty(){
         return size == 0;
     }
