@@ -121,9 +121,7 @@ public class HashMap<T1 extends Comparable<T1>,T2> implements MapInterface<T1,T2
     }
     
     public int hash(T1 k){
-        long hash = 1;
-        hash = (hash * 13 + ((Object)k).hashCode()) % map.length ;
-        return Math.abs((int)hash);
+        return Math.abs(((Object)k).hashCode()) % map.length ;
     }
     
     public void log(){
